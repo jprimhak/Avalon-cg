@@ -31,6 +31,8 @@ const H=[
 [{name:'Move 0',type:'move',n:0},{name:'Attack 3',type:'attack',n:3}],
 [{name:'Move 0, defend 1',type:'move',n:0,def:1},{name:'Attack 1, seize initiative',type:'attack',n:1,seize:true}]
 ];
+// Hound table was authored with top/bottom reversed; swap both effects on every turn.
+H.forEach(turn=>turn.reverse());
 let g,sel=[],pending=null;
 function log(msg){const p=document.createElement('p');p.textContent=msg;$('log').prepend(p);$('latest').textContent=msg;if(pending)pending.events.push(msg)}
 function reset(){g={hp:[10,10],pos:[1,5],stance:1,initiative:0,turn:1,used:[],over:false};sel=[];pending=null;$('overlay').hidden=true;$('log').replaceChildren();$('enemyLast').textContent='';log('New battle. You start at stance 1.');render()}
